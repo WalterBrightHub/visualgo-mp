@@ -1,7 +1,7 @@
 <template>
   <view class="content">
     <view class="algorithm-list">
-      <navigator class="algorithm-block" v-for="algorithm in algorithms" :url="algorithm.url">
+      <navigator class="algorithm-block" v-for="algorithm in algorithms" :key="algorithms.url" :url="algorithm.url">
         <view class="algo-name">{{algorithm.name}}</view>
       </navigator>
     </view>
@@ -16,7 +16,7 @@
           name: '排序',
           detail: '冒泡、选择、插入、归并、快速等排序方法',
           url: '/pages/sort/sort'
-        }]
+        }],
       }
     },
     onLoad() {
