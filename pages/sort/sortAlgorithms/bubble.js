@@ -17,6 +17,9 @@ const sortGenerator = function*(A) {
   for (i = 0; i < array.length - 1; i++) {
 
 
+    array[0].status = 'featured'
+
+
     for (j = 0; j < array.length - i - 1; j++) {
 
       // yield {
@@ -28,7 +31,7 @@ const sortGenerator = function*(A) {
       //   sequence: tranceformFrame(array)
       // }
 
-      array[j].status = array[j + 1].status = 'selected'
+      array[j + 1].status = 'selected'
 
       yield {
         info: {
@@ -45,8 +48,8 @@ const sortGenerator = function*(A) {
         array[j + 1] = t
 
 
-      array[j].status = 'compared'
-      array[j + 1].status = 'compared'
+        array[j].status = 'selected'
+        array[j + 1].status = 'featured'
 
         yield {
           info: {
@@ -55,9 +58,9 @@ const sortGenerator = function*(A) {
           sequence: tranceformFrame(array)
         }
       } else { //do nothing
-      
-      array[j].status = 'compared'
-      array[j + 1].status = 'compared'
+
+        array[j].status = 'selected'
+        array[j + 1].status = 'featured'
         yield {
           info: {
             desc: 'a[j]<a[j+1]，保持原状'
@@ -73,7 +76,7 @@ const sortGenerator = function*(A) {
       //   sequence: tranceformFrame(array)
       // }
       array[j].status = 'unsorted'
-      array[j + 1].status = 'unsorted'
+      // array[j + 1].status = 'unsorted'
     }
 
     array[array.length - i - 1].status = 'sorted'
@@ -96,4 +99,9 @@ const sortGenerator = function*(A) {
   }
 }
 
-export default sortGenerator
+const featuredRectWord = '泡泡'
+
+export default {
+  sortGenerator,
+  featuredRectWord
+}
