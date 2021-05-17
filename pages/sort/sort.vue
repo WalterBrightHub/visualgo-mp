@@ -31,12 +31,12 @@
           <view class="legend-text">选区</view>
         </view>
         <view class="legend-block">
-          <view class="legend legend-featured"></view>
-          <view class="legend-text">{{featuredRectWord}}</view>
-        </view>
-        <view class="legend-block">
           <view class="legend legend-sorted"></view>
           <view class="legend-text">排好序的</view>
+        </view>
+        <view class="legend-block">
+          <view class="legend legend-featured"></view>
+          <view class="legend-text">{{featuredRectWord}}</view>
         </view>
       </view>
     </view>
@@ -144,9 +144,8 @@
         return this.sortTypes[this.sortTypeValue]
       },
       sortProcess() {
-        let sortType = this.sortType.id
-        sortType = 'bubble'
-        // console.log(sortAlgorithms)
+        let sortType = this.sortType.id 
+        console.log(sortAlgorithms)
         let {
           sortGenerator
         } = sortAlgorithms[sortType]
@@ -352,7 +351,6 @@
 
   .rect-sorted {
     background-color: #099f17;
-    background-color: #a066ff;
   }
 
   .rect-selected {
@@ -365,6 +363,7 @@
 
   .rect-featured {
     background-color: #099f17;
+    background-color: #a066ff;
   }
 
   .control-panel {
@@ -477,12 +476,12 @@
 
   .legend-featured {
 
-    background-color: #099f17;
+    background-color: #a066ff;
   }
 
   .legend-sorted {
 
-    background-color: #a066ff;
+    background-color: #099f17;
   }
 
   .legend-text {
