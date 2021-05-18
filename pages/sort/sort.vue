@@ -149,7 +149,7 @@
         let {
           sortGenerator
         } = sortAlgorithms[sortType]
-        // console.log([...sortGenerator(this.dataset)])
+         // console.log([...sortGenerator(this.dataset)])
         return [...sortGenerator(this.dataset)]
       },
       sequences() {
@@ -185,6 +185,7 @@
           this.sortTypeValue = index
           this.isPlaying = false
           this.pointer = 0
+          this.onRandomArray()
         }
       },
       onBack() {
