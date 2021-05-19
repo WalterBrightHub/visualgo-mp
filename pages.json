@@ -13,7 +13,17 @@
       }
 
     }
-  ],
+
+        ,{
+            "path" : "pages/hanoi/hanoi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "算法可视化动画",

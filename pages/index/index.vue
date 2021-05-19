@@ -16,6 +16,10 @@
           name: '排序',
           detail: '冒泡、选择、插入、归并、快速等排序方法',
           url: '/pages/sort/sort'
+        },{
+          name: '递归-汉诺塔',
+          detail: '冒泡、选择、插入、归并、快速等排序方法',
+          url: '/pages/hanoi/hanoi'
         }],
       }
     },
@@ -29,5 +33,20 @@
 </script>
 
 <style lang="scss">
-  .content {}
+  .algorithm-list{
+    padding: 20rpx;
+  }
+  .algorithm-block{
+    background-color: $card-bg-color;
+    border-radius: 10rpx;
+  }
+  .algorithm-block+.algorithm-block{
+    margin-top: 20rpx;
+  }
+  .algo-name{
+    font-size: 36rpx;
+    padding:  20rpx;
+    font-weight: bold;
+    color: $theme-color;
+  }
 </style>
