@@ -1,9 +1,49 @@
 <template>
   <view class="content">
-    <view class="algorithm-list">
-      <navigator class="algorithm-block" v-for="algorithm in algorithms" :key="algorithms.url" :url="algorithm.url">
-        <view class="algo-name">{{algorithm.name}}</view>
-      </navigator>
+    <view class="theme-block">
+      <view class="theme-title">排序算法</view>
+      <view class="algo-list">
+
+        <navigator class="algorithm-block" url="/pages/sort/sort">
+          <view class="algo-name">冒泡</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/sort/sort">
+          <view class="algo-name">选择</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/sort/sort">
+          <view class="algo-name">插入</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/sort/sort">
+          <view class="algo-name">归并</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/sort/sort">
+          <view class="algo-name">快速</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="theme-block">
+      <view class="theme-title">递归算法</view>
+      <view class="algo-list">
+
+        <navigator class="algorithm-block" url="/pages/hanoi/hanoi">
+          <view class="algo-name">汉诺塔</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/hanoi/hanoiManual/hanoiManual">
+          <view class="algo-name">汉诺塔-动手尝试</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="theme-block">
+      <view class="theme-title">搜索算法</view>
+      <view class="algo-list">
+
+        <navigator class="algorithm-block" url="/pages/search/bfs/bfs">
+          <view class="algo-name">BFS</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/hanoi/hanoiManual/hanoiManual">
+          <view class="algo-name">汉诺塔-动手尝试</view>
+        </navigator>
+      </view>
     </view>
   </view>
 </template>
@@ -12,15 +52,6 @@
   export default {
     data() {
       return {
-        algorithms: [{
-          name: '排序',
-          detail: '冒泡、选择、插入、归并、快速等排序方法',
-          url: '/pages/sort/sort'
-        },{
-          name: '递归-汉诺塔',
-          detail: '冒泡、选择、插入、归并、快速等排序方法',
-          url: '/pages/hanoi/hanoi'
-        }],
       }
     },
     onLoad() {
@@ -33,19 +64,38 @@
 </script>
 
 <style lang="scss">
-  .algorithm-list{
-    padding: 20rpx;
+  .content{
+    padding: 20rpx 0;
   }
-  .algorithm-block{
+  .theme-block {
+    margin:0 20rpx;
     background-color: $card-bg-color;
-    border-radius: 10rpx;
   }
-  .algorithm-block+.algorithm-block{
+  .theme-block +.theme-block{
     margin-top: 20rpx;
   }
-  .algo-name{
+
+  .algo-list {
+
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+  }
+
+  .algorithm-block {
+    border-radius: 10rpx;
+    padding: 20rpx 0;
+  }
+
+.algo-name{
+  
+    display: flex;
+    justify-content: center;
+}
+
+
+  .theme-title {
     font-size: 36rpx;
-    padding:  20rpx;
+    padding: 20rpx;
     font-weight: bold;
     color: $theme-color;
   }
