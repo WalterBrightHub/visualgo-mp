@@ -19,7 +19,7 @@
       </view>
       <view class="control-item" @tap="onPlay">
         <image class="control-button"
-          :src="isPlaying?'../../../static/button-icons/stop.png':'../../../static/button-icons/play.png'"></image>
+          :src="isPlaying?'../../static/button-icons/stop.png':'../../static/button-icons/play.png'"></image>
         <view class="button-label">{{isPlaying?'暂停':'播放'}}</view>
       </view>
       <view class="control-item" @tap="onHead">
@@ -27,11 +27,29 @@
         <view class="button-label">重置</view>
       </view>
     </view>
+
+    <view class="custum-panel">
+      <view class="custom-label">播放速度</view>
+      <view class="speed-picker-item" @tap="changePlaySpeed(4)" :class="{['speed-picker-item-selected']:playSpeed===4}">
+        快速
+      </view>
+      <view class="speed-picker-item" @tap="changePlaySpeed(16)"
+        :class="{['speed-picker-item-selected']:playSpeed===16}">较快
+      </view>
+      <view class="speed-picker-item" @tap="changePlaySpeed(50)"
+        :class="{['speed-picker-item-selected']:playSpeed===50}">适中
+      </view>
+      <view class="speed-picker-item" @tap="changePlaySpeed(100)"
+        :class="{['speed-picker-item-selected']:playSpeed===100}">较慢
+      </view>
+
+    </view>
+
   </view>
 </template>
 
 <script>
-  import bfs from './bfs.js'
+  import searchAlgos from './searchAlgos/index.js'
   const clone = obj => JSON.parse(JSON.stringify(obj))
   let interval = null;
   const getMaze = () => {
@@ -68,34 +86,39 @@
     console.log(count)
     return maze
   }
-  let mazeBackup = null
+  // let mazeBackup = null
   export default {
     data() {
       return {
         algoTypes: [{
             name: 'BFS 广度优先搜索',
-            id: 'bubble'
+            id: 'bfs'
           },
           {
-            name: 'DSF 深度优先搜索',
-            id: 'selection'
+            name: 'DFS 深度优先搜索',
+            id: 'dfs'
           },
         ],
         algoTypeValue: 0,
         maze: [],
+        mazeBackup: [],
         pointer: 0,
         isPlaying: false,
-        sequences: [],
+        playSpeed: 4,
+        // sequences: [],
 
       };
     },
     watch: {
       isPlaying(newIsPlaying) {
         if (newIsPlaying) {
-          interval = setInterval(this.autoPlay, 4)
+          interval = setInterval(this.autoPlay, this.playSpeed)
         } else {
           clearInterval(interval)
         }
+      },
+      playSpeed(newSpeed){
+        this.isPlaying=false
       },
       pointer(newP, oldP) {
         if (newP === 1 + oldP) {
@@ -108,9 +131,27 @@
       }
     },
     computed: {
+      algoType() {
+        return this.algoTypes[this.algoTypeValue]
+      },
       flatMaze() {
         // console.log('hello!')
         return this.maze.reduce((res, curr) => res.concat(curr), [])
+      },
+      // searchGenerator(){
+      //   let algoType = this.algoType.id
+      //   // console.log(searchAlgos)
+      //   return searchAlgos[algoType]
+      // },
+      sequences() {
+        console.log('change seuqence')
+        let algoType = this.algoType.id
+        // console.log(searchAlgos)
+        let {
+          searchGenerator
+        } = searchAlgos[algoType]
+        // console.log([...sortGenerator(this.ma)])
+        return [...searchGenerator(this.mazeBackup)]
       },
       currentSequence() {
         return this.sequences[this.pointer]
@@ -128,29 +169,34 @@
         }
       }
     },
-    onLoad() {
-
-      mazeBackup = getMaze()
+    onLoad(option) {
+      let {
+        type
+      } = option
+      let mazeBackup = getMaze()
+      this.mazeBackup = mazeBackup
       this.maze = clone(mazeBackup).slice()
-      this.sequences = [...bfs(this.maze)]
+      if (type) {
+        this.algoTypeValue = Number(type)
+      }
+      // this.sequences = [...this.searchGenerator(this.maze)]
       // this.do(0)
     },
     onUnload() {
 
       clearInterval(interval)
     },
-    onShow() {
-
-    },
+    onShow() {},
     onHide() {
       this.pointer = 0
     },
     methods: {
-        onChangeAlgoType(index) {
-          if (index === 1) {
-            uni.redirectTo({
-              url: '/pages/search/dfs/dfs'
-            })
+      onChangeAlgoType(index) {
+        if (index !== this.algoTypeValue) {
+          this.algoTypeValue = index
+          this.isPlaying = false
+          this.maze = clone(this.mazeBackup).slice()
+          this.pointer = 0
         }
       },
       undo(p) {
@@ -229,14 +275,16 @@
       onHead() {
         this.isPlaying = false
         this.pointer = 0
-        this.maze = clone(mazeBackup).slice()
-        // this.sequences = [...bfs(mazeBackup)].slice()
+        this.maze = clone(this.mazeBackup).slice()
         uni.showToast({
           title: '初始状态',
           duration: 1000
         })
       },
-    }
+      changePlaySpeed(playSpeed) {
+        this.playSpeed = playSpeed
+      }
+    },
   }
 </script>
 
@@ -250,7 +298,7 @@
 
   .algo-type {
     font-size: 28rpx;
-    padding: 10rpx;
+    padding: 20rpx 0;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -305,5 +353,35 @@
     width: 64rpx;
     height: 64rpx;
     margin-bottom: 10rpx;
+  }
+
+
+
+  .custum-panel {
+    // margin-top: 10rpx;
+    margin-bottom: 8rpx;
+    background-color: $card-bg-color;
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    font-size: 32rpx;
+  }
+
+  .custom-label {
+    color: $text-title-color;
+    margin-right: auto;
+  }
+
+  .speed-picker-item {
+    width: 64rpx;
+    padding: 20rpx;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .speed-picker-item-selected {
+    background-color: $theme-color;
+    color: #fff;
   }
 </style>

@@ -303,7 +303,7 @@
 
   .sort-type {
     font-size: 28rpx;
-    padding: 10rpx;
+    padding: 20rpx 0;
     flex: 1;
     display: flex;
     justify-content: center;

@@ -37,11 +37,17 @@
       <view class="theme-title">搜索算法</view>
       <view class="algo-list">
 
+        <navigator class="algorithm-block" url="/pages/search/search?type=0">
+          <view class="algo-name">BFS</view>
+        </navigator>
+        <navigator class="algorithm-block" url="/pages/search/search?type=1">
+          <view class="algo-name">DFS</view>
+        </navigator>
         <navigator class="algorithm-block" url="/pages/search/bfs/bfs">
           <view class="algo-name">BFS</view>
         </navigator>
-        <navigator class="algorithm-block" url="/pages/hanoi/hanoiManual/hanoiManual">
-          <view class="algo-name">汉诺塔-动手尝试</view>
+        <navigator class="algorithm-block" url="/pages/search/dfs/dfs">
+          <view class="algo-name">DFS</view>
         </navigator>
       </view>
     </view>

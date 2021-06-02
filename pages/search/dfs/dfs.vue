@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import bfs from './bfs.js'
+  import dfs from './dfs.js'
   const clone = obj => JSON.parse(JSON.stringify(obj))
   let interval = null;
   const getMaze = () => {
@@ -77,11 +77,11 @@
             id: 'bubble'
           },
           {
-            name: 'DSF 深度优先搜索',
+            name: 'DFS 深度优先搜索',
             id: 'selection'
           },
         ],
-        algoTypeValue: 0,
+        algoTypeValue: 1,
         maze: [],
         pointer: 0,
         isPlaying: false,
@@ -98,10 +98,10 @@
         }
       },
       pointer(newP, oldP) {
-        if (newP === 1 + oldP) {
+        if (newP ===1+ oldP) {
           //前进
           this.do(newP)
-        } else if (newP === oldP - 1) {
+        } else if (newP === oldP-1) {
           //后退
           this.undo(oldP)
         }
@@ -130,28 +130,27 @@
     },
     onLoad() {
 
-      mazeBackup = getMaze()
-      this.maze = clone(mazeBackup).slice()
-      this.sequences = [...bfs(this.maze)]
+      mazeBackup=getMaze()
+        this.maze=clone(mazeBackup).slice()
+      this.sequences = [...dfs(this.maze)]
       // this.do(0)
-    },
-    onUnload() {
+    },    onUnload() {
 
       clearInterval(interval)
     },
     onShow() {
 
     },
-    onHide() {
-      this.pointer = 0
+    onHide(){
+      this.pointer=0
     },
     methods: {
-        onChangeAlgoType(index) {
-          if (index === 1) {
-            uni.redirectTo({
-              url: '/pages/search/dfs/dfs'
-            })
-        }
+      onChangeAlgoType(index) {
+        if (index ===0) {
+          uni.redirectTo({
+            url:'/pages/search/bfs/bfs'
+          })
+          }
       },
       undo(p) {
         if (this.sequences[p]) {
@@ -230,7 +229,7 @@
         this.isPlaying = false
         this.pointer = 0
         this.maze = clone(mazeBackup).slice()
-        // this.sequences = [...bfs(mazeBackup)].slice()
+        // this.sequences = [...dfs(mazeBackup)].slice()
         uni.showToast({
           title: '初始状态',
           duration: 1000
@@ -241,13 +240,14 @@
 </script>
 
 <style lang="scss">
+  
   .algo-type-picker-list {
     display: flex;
     background-color: $card-bg-color;
     margin-bottom: 8rpx;
     // justify-content: space-between;
   }
-
+  
   .algo-type {
     font-size: 28rpx;
     padding: 10rpx;
@@ -255,12 +255,11 @@
     display: flex;
     justify-content: center;
   }
-
+  
   .algo-type-selected {
     color: #fff;
     background-color: $theme-color;
   }
-
   .cell-block {
     display: grid;
     grid-template-columns: repeat(30, 25rpx);
