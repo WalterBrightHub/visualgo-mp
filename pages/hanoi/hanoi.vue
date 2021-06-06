@@ -1,8 +1,8 @@
 <template>
   <view class="content">
     <view class="algo-type-picker-list">
-        <view class="algo-type algo-type-selected">汉诺塔算法</view>
-        <view class="algo-type" @tap="onChangeAlgoType()">汉诺塔 动手尝试</view>
+      <view class="algo-type algo-type-selected">汉诺塔算法</view>
+      <view class="algo-type" @tap="onChangeAlgoType()">汉诺塔 动手尝试</view>
     </view>
     <view class="draw">
       <view class="sequence" v-for="(item,ind) in currentSequence" :key="ind">
@@ -61,18 +61,18 @@
         <view class="status-context">{{pointer}}</view>
       </view>
     </view>
-    
+
     <div class="desc-list">
       <div class="desc-block" v-for="(desc,index) in description" :key="index">{{desc}}</div>
     </div>
     <view class="code-list">
       <view class="title-block">
-    
+
         <view class="card-title">伪代码</view>
       </view>
       <view class="code-block" v-for="(line,index) in code">
         <view class="code-index">{{index+1}}. </view>
-      <text class="code-text" space="nbsp">{{line}}</text>
+        <text class="code-text" space="nbsp">{{line}}</text>
       </view>
     </view>
 
@@ -83,7 +83,7 @@
 <script>
   import hanoi from './hanoi.js'
 
-  let description=[
+  let description = [
     '在3个立柱的汉诺塔游戏中，需要将所有圆盘从一个立柱移动到另一个立柱上，并且过程中始终保持小圆盘在大圆盘的上方。',
     '利用递归算法可以解决汉诺塔游戏。若要将立柱A上的n个圆盘移动到立柱C, 记为hanoi(n,A,B,C), 有3个分步骤：',
     '1, 将n-1个圆盘移动到立柱B, 需要hanoi(n-1,A,C,B)步',
@@ -92,7 +92,7 @@
     '其中，步骤1和步骤3都是递归调用自身的过程。',
     '记3个立柱的n个圆盘的游戏的最少步数为step(n), 则有step(1)=1, step(k)=2*step(k-1)+1，易知最少步数step(n)=2^n-1步。'
   ]
-  let code=[
+  let code = [
     'function hanoi( n , A , B , C )',
     '  if n==1',
     '    盘子从A移动到B',
@@ -142,6 +142,11 @@
     onUnload() {
 
       clearInterval(interval)
+    },
+    onShareAppMessage() {
+      return {
+        title:'我在看汉诺塔算法的可视化动画，推荐给你！'
+      }
     },
     methods: {
       onBack() {
@@ -211,9 +216,9 @@
           duration: 1000
         })
       },
-      onChangeAlgoType(){
+      onChangeAlgoType() {
         uni.redirectTo({
-          url:'./hanoiManual/hanoiManual'
+          url: './hanoiManual/hanoiManual'
         })
       },
       changePanNumber(n) {
@@ -363,13 +368,14 @@
     background-color: $theme-color;
     color: #fff;
   }
+
   .algo-type-picker-list {
     display: flex;
     background-color: $card-bg-color;
     margin-bottom: 8rpx;
     // justify-content: space-between;
   }
-  
+
   .algo-type {
     font-size: 28rpx;
     padding: 20rpx 0;
@@ -377,60 +383,65 @@
     display: flex;
     justify-content: center;
   }
-  
+
   .algo-type-selected {
     color: #fff;
     background-color: $theme-color;
   }
-  .desc-list{
+
+  .desc-list {
     margin-top: 8rpx;
     background-color: $card-bg-color;
     padding: 20rpx;
   }
-  .desc-block{
-    
-  }
-  .desc-block+.desc-block{
+
+  .desc-block {}
+
+  .desc-block+.desc-block {
     margin-top: 1em;
   }
+
   .status-list {
-  
+
     margin-bottom: 8rpx;
   }
-  
+
   .status-block {
     display: flex;
     align-items: center;
     background-color: #fff;
     padding: 20rpx;
-  
+
   }
-  
+
   .status-title {}
-  
+
   .status-context {
     margin-left: auto;
   }
-  
+
   .title-block {
     display: flex;
     align-items: flex-end;
     margin-bottom: 14rpx;
   }
-  
+
   .card-title {
     font-size: 32rpx;
   }
-  .code-list{
+
+  .code-list {
     font-family: 'Consolas';
     background-color: $card-bg-color;
     margin-top: 8rpx;
     padding: 20rpx;
   }
-  .code-block{
+
+  .code-block {
     display: flex;
   }
-  .code-index{
+
+  .code-index {
     flex-shrink: 0;
     width: 2em;
     display: flex;
@@ -438,10 +449,12 @@
     margin-right: 1em;
     color: $text-help-color;
   }
-  .code-text{
+
+  .code-text {
     word-break: break-all;
   }
-  .code-block+.code-block{
+
+  .code-block+.code-block {
     margin-top: 20rpx;
   }
 </style>

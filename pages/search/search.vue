@@ -258,6 +258,11 @@
     onHide() {
       this.pointer = 0
     },
+    onShareAppMessage() {
+      return {
+        title:'我在看搜索算法的可视化动画，推荐给你！'
+      }
+    },
     methods: {
       onChangeAlgoType(index) {
         if (index !== this.algoTypeValue) {

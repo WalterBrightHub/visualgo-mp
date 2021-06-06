@@ -66,6 +66,11 @@
     onLoad() {
 
     },
+    onShareAppMessage() {
+      return {
+        title:'算法可视化动画'
+      }
+    },
     methods: {
 
     }

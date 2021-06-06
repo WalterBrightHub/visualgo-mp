@@ -198,6 +198,11 @@
 
       clearInterval(interval)
     },
+    onShareAppMessage() {
+      return {
+        title:'我在看排序算法的可视化动画，推荐给你！'
+      }
+    },
     methods: {
       onChangeSortType(index) {
         if (index !== this.sortTypeValue) {

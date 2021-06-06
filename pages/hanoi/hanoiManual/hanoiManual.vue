@@ -126,6 +126,11 @@
 
       clearInterval(interval)
     },
+    onShareAppMessage() {
+      return {
+        title:'我在动手尝试汉诺塔算法，推荐给你！'
+      }
+    },
     methods: {
       onBack() {
         if (this.pointer > 0) {
@@ -271,6 +276,7 @@
 <style lang="scss">
   .content {
     background-color: $page-bg-color;
+    padding-bottom: 128rpx;
   }
 
 
