@@ -1,5 +1,9 @@
 <template>
   <view class="content">
+    <view class="algo-type-picker-list">
+        <view class="algo-type" @tap="onChangeAlgoType()">汉诺塔算法</view>
+        <view class="algo-type algo-type-selected">汉诺塔 动手尝试</view>
+    </view>
     <view class="draw">
       <view class="sequence" v-for="(item,ind) in currentSequence" :key="ind">
         <!-- 2*35+10*50+9*20 =750rpx-->
@@ -88,6 +92,15 @@
   export default {
     data() {
       return {
+        algoTypes: [{
+            name: '汉诺塔算法',
+            id: 'bfs'
+          },
+          {
+            name: '汉诺塔 动手尝试',
+            id: 'dfs'
+          },
+        ],
         panNumber: 4,
         pointer: 0,
         sequences: getInitSequences(4),
@@ -177,6 +190,11 @@
 
             } else if (res.cancel) {}
           }
+        })
+      },
+      onChangeAlgoType(){
+        uni.redirectTo({
+          url:'../hanoi'
         })
       },
       tapArea(t) {
@@ -444,4 +462,25 @@
   .help-text {
     margin-top: 10rpx;
   }
+  
+  .algo-type-picker-list {
+    display: flex;
+    background-color: $card-bg-color;
+    margin-bottom: 8rpx;
+    // justify-content: space-between;
+  }
+
+  .algo-type {
+    font-size: 28rpx;
+    padding: 20rpx 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .algo-type-selected {
+    color: #fff;
+    background-color: $theme-color;
+  }
+
 </style>

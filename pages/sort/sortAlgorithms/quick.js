@@ -66,7 +66,22 @@ const sortGenerator = function*(A) {
 
 const featuredRectWord = '基准位置'
 
+const code=[
+  'function sort( left , right )',
+  '  选定基准t = left',
+  '  i = left+1',
+  '  j = right',
+  '  i 和 j 向中间移动, 移动的过程中若出现 a[i] > a[j] , 则 swap( a[i] , a[j] )',
+  '  swap( a[left] , a[j] ) // 此时 a[left:j-1] 均小于 a[j], a[j+1:right] 均大于 a[j]',
+  '  sort( left , j-1 )',
+  '  sort( j+1 , right )',
+  '',
+  'function QuickSort',
+  '  return sort( 0 , n-1 )'
+]
+
 export default {
   sortGenerator,
-  featuredRectWord
+  featuredRectWord,
+  code
 }

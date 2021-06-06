@@ -85,7 +85,14 @@ const sortGenerator = function*(A) {
 
 const featuredRectWord = '最小项'
 
+const code=[
+  'for i = 0 to n-2',
+  '  找到 j 满足 a[j] = min( a[i+1:n-1] )',
+  '  if( a[i] <a[j] ) swap( a[i] , a[j] )'
+]
+
 export default {
   sortGenerator,
-  featuredRectWord
+  featuredRectWord,
+  code
 }

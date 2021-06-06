@@ -50,7 +50,14 @@ const sortGenerator = function*(A) {
 
 const featuredRectWord = '待排序项'
 
+const code=[
+  'for i = 1 to n-1',
+  '  找到满足的 j 使得 a[j] = min[i:n-1]',
+  '  swap( a[i] , a[j] )'
+]
+
 export default {
   sortGenerator,
-  featuredRectWord
+  featuredRectWord,
+  code
 }

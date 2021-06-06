@@ -100,8 +100,14 @@ const sortGenerator = function*(A) {
 }
 
 const featuredRectWord = '泡泡'
+const code=[
+  'for i = 0 to n-1',
+  '  for j = 0 to n-i-1',
+  '    if( a[j] > a[j+1] ) swap( a[j] , a[j+1] )'
+]
 
 export default {
   sortGenerator,
-  featuredRectWord
+  featuredRectWord,
+  code
 }

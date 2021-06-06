@@ -75,6 +75,16 @@
         <view class="array-button array-random-button" @tap="onRandomArray">随机</view>
       </view>
     </view>
+    <view class="code-list">
+      <view class="title-block">
+
+        <view class="card-title">伪代码</view>
+      </view>
+      <view class="code-block" v-for="(line,index) in algo.code">
+        <view class="code-index">{{index+1}}. </view>
+      <text class="code-text" space="nbsp">{{line}}</text>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -143,9 +153,11 @@
       sortType() {
         return this.sortTypes[this.sortTypeValue]
       },
+      algo(){
+        return sortAlgorithms[this.sortType.id ]
+      },
       sortProcess() {
         let sortType = this.sortType.id 
-        console.log(sortAlgorithms)
         let {
           sortGenerator
         } = sortAlgorithms[sortType]
@@ -174,6 +186,13 @@
     },
     onHide() {
       this.isPlaying = false
+    },
+    onLoad(option) {
+      
+        let {
+          type
+        } = option
+        this.sortTypeValue=Number(type)||0
     },
     onUnload() {
 
@@ -292,6 +311,7 @@
 <style lang="scss">
   .content {
     background-color: $page-bg-color;
+    padding-bottom: 128rpx;
   }
 
   .sort-type-picker-list {
@@ -490,4 +510,28 @@
     line-height: 28rpx;
     margin-left: 10rpx;
   }
+  .code-list{
+    font-family: 'Consolas';
+    background-color: $card-bg-color;
+    margin-top: 8rpx;
+    padding: 20rpx;
+  }
+  .code-block{
+    display: flex;
+  }
+  .code-index{
+    flex-shrink: 0;
+    width: 2em;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1em;
+    color: $text-help-color;
+  }
+  .code-text{
+    word-break: break-all;
+  }
+  .code-block+.code-block{
+    margin-top: 20rpx;
+  }
+  
 </style>

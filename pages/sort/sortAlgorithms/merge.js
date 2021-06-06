@@ -75,8 +75,21 @@ const sortGenerator = function*(A) {
 }
 
 const featuredRectWord = '当前合并的区间'
+const code=[
+  'function sort( left , right )',
+  '  if( left == right)',
+  '    return',
+  '  else',
+  '    middle = ( left + right ) / 2',
+  '    sort( left , middle)',
+  '    sort( middle , right)',
+  '    merge( left , middle , right )',
+  'function MergeSort',
+  '  return sort( 0 , n-1 )'
+]
 
 export default {
   sortGenerator,
-  featuredRectWord
+  featuredRectWord,
+  code
 }
