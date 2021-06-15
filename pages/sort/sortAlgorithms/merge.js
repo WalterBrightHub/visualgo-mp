@@ -4,7 +4,7 @@ const sortGenerator = function*(A) {
   const array = A.map(item => ({
     ...item
   })) //深拷贝
-  console.log(array)
+  // console.log(array)
   yield {
     info: {
       desc: '准备开始排序'
@@ -88,8 +88,15 @@ const code=[
   '  return sort( 0 , n-1 )'
 ]
 
+
+const description=[
+  '归并排序排序排序是一种高效率的排序算法。',
+  '归并排序体现了分治的思想，将待排序的列表分为两份分别排序，然后将两个有序列表合并成一个有序列表。',
+]
+
 export default {
   sortGenerator,
   featuredRectWord,
-  code
+  code,
+  description
 }

@@ -75,6 +75,9 @@
         <view class="array-button array-random-button" @tap="onRandomArray">随机</view>
       </view>
     </view>
+    <div class="desc-list">
+      <div class="desc-block" v-for="(desc,index) in algo.description" :key="index">{{desc}}</div>
+    </div>
     <view class="code-list">
       <view class="title-block">
 
@@ -226,7 +229,7 @@
       },
       onNext() {
         this.isPlaying = false
-        console.log('next')
+        // console.log('next')
         if (this.pointer < this.sequences.length - 1) {
           if (this.pointer === this.sequences.length - 2) {
 
@@ -250,7 +253,7 @@
         this.isPlaying = !this.isPlaying
       },
       autoPlay() {
-        console.log('auto play')
+        // console.log('auto play')
 
         if (this.pointer < this.sequences.length - 1) {
           this.pointer++
@@ -280,7 +283,7 @@
         })
       },
       onApplyCustomArray() {
-        console.log(this.customArray)
+        // console.log(this.customArray)
         let newArray = this.customArray.trim().split(' ').slice(0, 10).map(str => Number(str))
         if (newArray.length < 2) {
           uni.showToast({
@@ -537,6 +540,17 @@
   }
   .code-block+.code-block{
     margin-top: 20rpx;
+  }
+  .desc-list{
+    margin-top: 8rpx;
+    background-color: $card-bg-color;
+    padding: 20rpx;
+  }
+  .desc-block{
+    
+  }
+  .desc-block+.desc-block{
+    margin-top: 1em;
   }
   
 </style>

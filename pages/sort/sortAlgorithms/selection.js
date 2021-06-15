@@ -90,9 +90,14 @@ const code=[
   '  找到 j 满足 a[j] = min( a[i+1:n-1] )',
   '  if( a[i] <a[j] ) swap( a[i] , a[j] )'
 ]
+const description=[
+  '选择排序排序排序是一种基本的排序算法。',
+  '选择排序每次在未排序的列表中选择最小的项，这样经过n-1次选择之后就完成了从小到大的排序。',
+]
 
 export default {
   sortGenerator,
   featuredRectWord,
-  code
+  code,
+  description
 }

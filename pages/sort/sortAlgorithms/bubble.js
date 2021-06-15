@@ -106,8 +106,14 @@ const code=[
   '    if( a[j] > a[j+1] ) swap( a[j] , a[j+1] )'
 ]
 
+const description=[
+  '冒泡排序是一种基本的排序算法。',
+  '在每一次操作中，从左往右两两比较，并让较大的数往左移动，就好像大的泡泡往左冒一样。',
+]
+
 export default {
   sortGenerator,
   featuredRectWord,
-  code
+  code,
+  description
 }

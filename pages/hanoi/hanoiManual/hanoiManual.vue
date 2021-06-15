@@ -146,7 +146,7 @@
         }
       },
       onNext() {
-        console.log('next')
+        // console.log('next')
         if (this.pointer < this.sequences.length - 1) {
 
           this.sourceTower = -1

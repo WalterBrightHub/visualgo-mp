@@ -52,12 +52,17 @@ const featuredRectWord = '待排序项'
 
 const code=[
   'for i = 1 to n-1',
-  '  找到满足的 j 使得 a[j] = min[i:n-1]',
-  '  swap( a[i] , a[j] )'
+  '  向左移动 a[i] 使得 a[0:i] 有序',
+]
+
+const description=[
+  '插入排序排序是一种基本的排序算法。',
+  '在每一次操作中，将有序序列右边的项往左移动，直到新的序列有序。',
 ]
 
 export default {
   sortGenerator,
   featuredRectWord,
-  code
+  code,
+  description
 }

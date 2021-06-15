@@ -140,7 +140,7 @@
         }
       }
     }
-    console.log(count)
+    // console.log(count)
     maze[0][0]=7
     maze[29][29]=7
     return maze
@@ -206,7 +206,7 @@
         return searchAlgos[this.algoType.id]
       },
       sequences() {
-        console.log('change seuqence')
+        // console.log('change seuqence')
         let algoType = this.algoType.id
         // console.log(searchAlgos)
         let {

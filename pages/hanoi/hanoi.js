@@ -24,7 +24,7 @@ let hanoi = function*(n) {
     }
     return sequence
   }
-  console.log(towers)
+  // console.log(towers)
   yield {
     info:{from:0,to:0},
     sequence:getSequence()
@@ -35,7 +35,7 @@ let hanoi = function*(n) {
       let movedPan = towers[from].pop()
       // console.log(movedPan)
       towers[to] = towers[to].concat(movedPan)
-      console.log(towers)
+      // console.log(towers)
       yield {
         info:{from,to},
         sequence:getSequence()}

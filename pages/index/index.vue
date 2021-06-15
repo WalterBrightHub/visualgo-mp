@@ -5,23 +5,23 @@
       <view class="algo-list">
 
         <navigator class="algorithm-block" url="/pages/sort/sort?type=0">
-          <image class="algo-pic" src="../../static/algo-icons/bubble-sort.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/bubble-sort.png"></image> -->
           <view class="algo-name">冒泡</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/sort/sort?type=1">
-          <image class="algo-pic" src="../../static/algo-icons/selection-sort.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/selection-sort.png"></image> -->
           <view class="algo-name">选择</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/sort/sort?type=2">
-          <image class="algo-pic" src="../../static/algo-icons/insertion-sort.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/insertion-sort.png"></image> -->
           <view class="algo-name">插入</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/sort/sort?type=3">
-          <image class="algo-pic" src="../../static/algo-icons/merge-sort.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/merge-sort.png"></image> -->
           <view class="algo-name">归并</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/sort/sort?type=4">
-          <image class="algo-pic" src="../../static/algo-icons/quick-sort.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/quick-sort.png"></image> -->
           <view class="algo-name">快速</view>
         </navigator>
       </view>
@@ -31,11 +31,11 @@
       <view class="algo-list">
 
         <navigator class="algorithm-block" url="/pages/hanoi/hanoi">
-          <image class="algo-pic" src="../../static/algo-icons/hanoi.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/hanoi.png"></image> -->
           <view class="algo-name">汉诺塔</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/hanoi/hanoiManual/hanoiManual">
-          <image class="algo-pic" src="../../static/algo-icons/hanoi-manual.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/hanoi-manual.png"></image> -->
           <view class="algo-name">汉诺塔-动手尝试</view>
         </navigator>
       </view>
@@ -45,11 +45,11 @@
       <view class="algo-list">
 
         <navigator class="algorithm-block" url="/pages/search/search?type=0">
-          <image class="algo-pic" src="../../static/algo-icons/bfs.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/bfs.png"></image> -->
           <view class="algo-name">BFS</view>
         </navigator>
         <navigator class="algorithm-block" url="/pages/search/search?type=1">
-          <image class="algo-pic" src="../../static/algo-icons/dfs.png"></image>
+          <!-- <image class="algo-pic" src="../../static/algo-icons/dfs.png"></image> -->
           <view class="algo-name">DFS</view>
         </navigator>
       </view>
@@ -93,17 +93,17 @@
 
   .algo-list {
 
-    display: grid;
-    grid-template-columns: repeat(3, 33.33%);
-    grid-row-gap: 20rpx;
+    // display: grid;
+    // grid-template-columns: repeat(3, 33.33%);
+    // grid-row-gap: 20rpx;
   }
 
   .algorithm-block {
     // border-radius: 10rpx;
-    // padding:30rpx 20rpx ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding:30rpx 20rpx ;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
   }
     .algorithm-block +  .algorithm-block {
       // border-top: 1rpx solid $divider-color;

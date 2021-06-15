@@ -80,8 +80,14 @@ const code=[
   '  return sort( 0 , n-1 )'
 ]
 
+const description=[
+  '快速排序排序排序是一种高效率的排序算法。',
+  '快速排序也是一种分治的排序算法，将待排序的序列划分成小于基准、基准项、大于基准的三部分，然后对两遍的部分序列再进行快速排序。',
+]
+
 export default {
   sortGenerator,
   featuredRectWord,
-  code
+  code,
+  description
 }

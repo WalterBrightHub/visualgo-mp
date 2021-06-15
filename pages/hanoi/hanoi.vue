@@ -163,7 +163,7 @@
       },
       onNext() {
         this.isPlaying = false
-        console.log('next')
+        // console.log('next')
         if (this.pointer < this.sequences.length - 1) {
           if (this.pointer === this.sequences.length - 2) {
 
@@ -187,7 +187,7 @@
         this.isPlaying = !this.isPlaying
       },
       autoPlay() {
-        console.log('auto play')
+        // console.log('auto play')
 
         if (this.pointer < this.sequences.length - 1) {
           this.pointer++
